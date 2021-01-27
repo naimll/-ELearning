@@ -42,5 +42,21 @@
             <span class="badge bg-success">Welcome  {{Session::get('name')}}</span>
           </nav>
         </div>
+        @if (Session::has('success'))
+        <div class="alert alert-info">
+            {{Session::get('success')}}
+        </div>
+        @endif
+
+        <div class="container my-4">
+          <form action="{{route('uploadFile')}}" class="form-control" enctype="multipart/form-data" method="POST">
+            @csrf
+            <div class="form-group mb-2">
+              <label for="file">File: </label>
+              <input type="file" name="file"  class="form-control">
+            </div>
+            <button type="submit" class="btn btn-sm btn-primary">Upload</button>
+          </form>
+        </div>
 </body>
 </html>
